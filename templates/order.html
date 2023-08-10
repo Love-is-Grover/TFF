@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{%block content%}
+{% include "nav.html" %}
+
+
+<section class="h-100 gradient-custom" style="padding-top: 90px;">
+    <div class="container py-5">
+        <div class="row d-flex justify-content-center my-4">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <div class="card-header py-3">
+                        <h5 class="mb-0">Your Orders</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Single item -->
+                        {% for order in order %}
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                                <!-- Image -->
+                                <div class="bg-image hover-overlay hover-zoom ripple rounded"
+                                    data-mdb-ripple-color="light">
+                                    <img src="{{order.product.image.url}}" class="w-50"
+                                        alt="Blue Jeans Jacket" />
+                                </div>
+                                <!-- Image -->
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 align-items-center d-flex">
+                                <!-- Data -->
+                                <span class="fs-5"><strong>{{order.product.name}}</strong></span>
+                                <!-- Data -->
+                            </div>
+
+                            <div
+                                class="col-lg-2 col-md-6 mb-4 mb-lg-0 align-items-center justify-content-center d-flex ">
+                                <span class="fs-5"><b>Qty : </b> {{order.quantity}}</span>
+                            </div>
+                            <div class="col-lg-2 col-md-6 mb-4 mb-lg-0 align-items-center d-flex ">
+                                <span class="fs-5 fw-bold">₹ {{order.total}}</span>
+                            </div>
+                            <div class="col-lg-2 col-md-6 mb-4 mb-lg-0 align-items-center d-flex">
+                                <h5>Status : <span class="badge {% if order.status == 'Delivered' %}bg-success{% elif order.status == 'Shipped' %}bg-warning{% else %}bg-secondary{% endif %}">{{order.status}}</span></h5>
+                            </div>
+                        </div>
+                        <hr class="my-4">
+                        <!-- Single item end -->
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+            {% include "footer.html" %}
+            {% endblock %}

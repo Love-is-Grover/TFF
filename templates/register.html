@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{%block content%}
+{% include "nav.html" %}
+
+{% if log %}
+<div class="container-fluid bg-light pb-5" style="padding-top: 104px; ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 m-auto bg-white rounded-top py-4 mt-5" style="border-top: 05px solid #f4476b">
+                <div class="text-center my-4">
+                    <i class="fa fa-envelope fa-7x"></i>
+                </div>
+                <div class="text-center fw-bold mb-3">
+                    <h1>Mail Sent !</h1>    
+                </div>
+                <div class="text-center mb-3 text-muted lead px-3">
+                    We have sent you a verification mail on your e-mail id provided by you.
+                    Becoming a user is as simple as completing the process.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if form %}
+<div class="container-fluid bg-light">
+    <div class="container " style="padding-top: 104px;">
+        <div class="row py-5">
+            <div class="col-lg-4 m-auto bg-white rounded-top" style="border-top: 05px solid #f4476b">
+                <h1 class="text-center fw-bold pt-3 mt-3">Sign-Up Now</h1>
+                <p class="text-center text-muted lead mb-4">It's free and just take only 5 minutes.</p>
+                <form action="" class="px-3" method="POST">
+                    {% csrf_token %}
+                    {% with form.errors.value.0|first as first_doc %}{{ first_doc.id }}{% endwith %}
+                    {% if form.errors.username %}
+                        <div class="alert bg-primary text-center" role="alert">
+                            <span class="text-white">{{form.errors.username.0}}</span>
+                        </div>
+                    {% elif form.errors.email %}
+                        <div class="alert bg-primary text-center" role="alert">
+                            <span class="text-white">{{form.errors.email.0}}</span>
+                        </div>
+                    {% elif form.errors.password1 %}
+                        <div class="alert bg-primary text-center" role="alert">
+                            <span class="text-white">{{form.errors.password1.0}}</span>
+                        </div>
+                    {% elif form.errors.password2 %}
+                        <div class="alert bg-primary text-center" role="alert">
+                            <span class="text-white">{{form.errors.password2.0}}</span>
+                        </div>
+                    {% endif %}
+                    <div class="input-group pb-3">
+                        <span class="input-group-text"><i class="fa fa-user"></i></span>
+                        {{form.username}}
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                        {{form.email}}
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                        {{form.password1}}
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                        {{form.password2}}
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn mt-2">Sign-Up Now</button>
+                        <!-- <p class="text-center mt-2 fs-6 text-muted">when you register by clicking on signup button, you will become our customer and can shop from us.</p> -->
+                        <p class="text-center mt-4">Already have an Account ? <a href="login"
+                                style="text-decoration: none; color: #f4476b;">Log-In Here</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+
+{% include "footer.html" %}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{%block content%}
+{% include "nav.html" %}
+
+
+<div class="container-fluid bg-light">
+    <div class="container " style="padding-top: 104px;">
+        <div class="row py-5">
+            <div class="col-lg-4 m-auto bg-white rounded-top" style="border-top: 05px solid #f4476b">
+                <h1 class="text-center fw-bold pt-3 mt-3">Log-In Now</h1>
+                <p class="text-center text-muted lead mb-4">Welcome to The Forgotten Friend</p>
+                <form action="" class="px-3" method="POST">
+                    {% csrf_token %}
+                    <div class="input-group pb-3">
+                        <span class="input-group-text"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" name="username" placeholder="Username">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn mt-2">Log-In Now</button>
+                        <!-- <p class="text-center mt-2 fs-6 text-muted">when you register by clicking on signup button, you will become our customer and can shop from us.</p> -->
+                        <p class="text-center mt-4">Forgot Password ? <a href="reset-password"
+                                style="text-decoration: none; color: #f4476b;">Click Here</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% include "footer.html" %}
+{% endblock %}

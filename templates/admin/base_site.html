@@ -1,0 +1,21 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+{% block branding %}
+{% block extrastyle %}
+  <link rel='stylesheet' href="{% static 'css/admin.css' %}">
+    <style type="text/css">
+        body.login {
+            background-image: url("{%static 'images/banner-img-1.jpg'  %} ") ;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+{% endblock %}
+<h1 = 'head'>
+<img src="{% static 'images/logo expanded dark.png' %}" alt="  djDemo" class="brand_img" height="50" width="80">
+The Forgotten Friend
+  </h1>
+{% endblock %}
+
+

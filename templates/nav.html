@@ -1,0 +1,65 @@
+{% load cart_tag %}
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-4 fixed-top">
+    <div class="container">
+        <a class="navbar-brand d-flex justify-content-between align-items-center order-lg-0" href="index.html">
+            <img src="/static/images/LOGO.jpg" alt="site icon">
+            {% comment %} <span class="text-uppercase fw-lighter ms-2">TFF</span> {% endcomment %}
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse order-lg-1" id="navMenu">
+            <ul class="navbar-nav mx-auto text-center">
+                <li class="nav-item px-2 py-2">
+                    <a class="nav-link text-uppercase text-dark" href="{% url 'home'  %}#header">home</a>
+                </li>
+                <li class="nav-item px-2 py-2">
+                    <a class="nav-link text-uppercase text-dark" href="{% url 'home'  %}#collection">Products</a>
+                </li>
+                <li class="nav-item px-2 py-2">
+                    <a class="nav-link text-uppercase text-dark" href="{% url 'home'  %}#about">About-Us</a>
+                </li>
+                <li class="nav-item px-2 py-2">
+                    <a class="nav-link text-uppercase text-dark" href="{% url 'home'  %}#special">Specials</a>
+                </li>
+                <li class="nav-item px-2 py-2">
+                    <a class="nav-link text-uppercase text-dark" href="{% url 'home'  %}#sale">On-Sale</a>
+                </li>
+                <li class="nav-item px-2 py-2 border-0">
+                    <a class="nav-link text-uppercase text-dark" href="{% url 'home'  %}#feedback">Feedback</a>
+                </li>
+            </ul>
+            {% if request.user.is_authenticated %}
+            <div class="nav-btns">
+                <button type="button" onclick="location.href = '{% url 'changepass'  %}';" class="btn nav-btns position-relative">
+                    <i class="fa fa-solid fa-key"></i>
+                </button>
+                <button type="button" onclick="location.href = '{% url 'cart_detail' %}';" class="btn nav-btns position-relative">
+                    <i class="fa fa-shopping-cart"></i>
+                    {% if request.session.cart|length > 0 %}
+                    <span class="position-absolute top-0 start-100 translate-middle badge bg-primary" >{{request.session.cart|length}}</span>
+                    {% endif %}
+                    
+                </button>
+                <button type="button" onclick="location.href = '{% url 'order' %}';" class="btn nav-btns position-relative">
+                    <i class="fas fa-shipping-fast"></i>
+                </button>
+                <a href="{% url 'logout' %}" class="btn btn-sm btn-primary position-relative mx-4">
+                    Log-Out
+                </a>    
+            </div>
+            {% else %}
+            <a href="{% url 'login' %}" class="btn btn-sm btn-primary me-2 text-center position-relative">
+                Log-In
+            </a>
+            <a href="{% url 'register' %}" class="btn btn-sm btn-primary text-center position-relative">
+                Register
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+<!-- end of navbar -->

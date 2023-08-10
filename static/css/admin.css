@@ -1,0 +1,64 @@
+
+
+
+
+
+#header{
+    height: 50px;
+    background: #212529;
+    color: white;
+  }
+  #header a:link, #header a:visited {
+      color: #e5345b;
+  }
+  #branding h1{
+    color: white;
+    font-weight: 800;
+  }
+
+
+  h1{
+    font-weight: 700;
+    color: #212529;
+  }
+  .module h2, .module caption, .inline-group h2{
+    background: #e5345b;
+    color: #000;
+  }
+  a.section:link{
+    color: #000;
+  }
+  a:link{
+    color: #000;
+  }
+
+
+
+  div.breadcrumbs {
+    background: #2ad7dd;
+    color:white;
+  }
+  div.breadcrumbs a {
+    color: white;
+  }
+
+
+
+
+  .button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #212529;
+    color: #fff;
+    border-radius: 14px;
+  }
+  .button:hover, input[type=submit]:hover, input[type=button]:hover, input[type=button]:hover, .submit-row input:hover, a.button:hover{
+    background: #2ad7dd;
+    color: #333;
+  }
+  .button.default, input[type=submit].default, .submit-row input.default{
+    background: #2ad7dd;
+    color: #333;
+  }
+  .button.default:hover, input[type=submit].default:hover, .submit-row input.default:hover{
+    background: #2ad7dd;
+    color: #fff;
+  }
