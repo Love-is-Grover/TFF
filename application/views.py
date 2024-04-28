@@ -179,4 +179,6 @@ def feedback(request):
         messages.success(request,"Feedback sent Successfully!")
         fbk.save()
     return redirect("home")
+
+#fixed cart system
     
